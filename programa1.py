@@ -109,6 +109,7 @@ def mostrar(lotes):
                 terminados = []
                 for j in procesados:
                     terminados.extend([
+                        f"",
                         f"Nombre: {j[0]}",
                         f"Operacion pedida: {j[1]}",
                         f"Resultado: {j[4]}"
@@ -123,6 +124,7 @@ def mostrar(lotes):
                 
                 print() 
                 print(f"Tiempo global: {tiempo}")
+                print() 
 
                 time.sleep(1)
                 tiempo += 1
@@ -131,6 +133,13 @@ def mostrar(lotes):
             procesados.append(i)
         
         numero_de_lotes += 1
+
+    print("-------------------------------")
+    print("PROCESOS COMPLETOS FINALES")
+    for i in procesados:
+        print("----------------------------------------------------------")
+        print (f"Nombre: {i[0]}")
+        print (f"Operacion: {i[1]} valores: {i[2]} y {i[3]} Resultado: {i[4]}")
 
 while True:
     cantidad = int(input("Ingrese el numero de procesos que desea ingresar: "))
