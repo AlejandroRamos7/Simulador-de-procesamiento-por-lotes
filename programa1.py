@@ -1,6 +1,7 @@
 import time  
+import os
 
-def validar_operacion(opcion, a, b):     
+def operacion(opcion, a, b):     
     match opcion:          
         case 1:             
             return a + b    
@@ -9,17 +10,14 @@ def validar_operacion(opcion, a, b):
         case 3:             
             return a * b    
         case 4:             
-            if b == 0:                 
-                return "Indefinida"             
-            else:                 
-                return a / b     
+            return a / b     
         case 5:             
-            if b == 0:                 
-                return "Indefinida"             
-            else:                 
-                return a % b     
+            return a % b     
         case 6:             
             return a ** b  
+
+def limpiar():
+    os.system("cls")
 
 def captura(lista_id):     
     procesos = []      
@@ -41,15 +39,15 @@ def captura(lista_id):
         else:             
             break      
 
-    while True:         
-        try:             
-            a = int(input("ingrese el valor de a: "))             
-            b = int(input("ingrese el valor de b: "))             
-            break         
-        except:             
-            print("Solo numeros enteros")      
+    while True:   
+        a = int(input("ingrese el valor de a: "))             
+        b = int(input("ingrese el valor de b: "))  
+        if b==0:        
+            print("b no puede valer 0, ingres otros valores")             
+        else:
+            break   
 
-    resultado = validar_operacion(opcion, a, b)      
+    resultado = operacion(opcion, a, b)      
 
     while True:         
         tiempo = int(input("Ingrese el tiempo maximo estimado (debe ser mayor a 0): "))         
@@ -82,7 +80,7 @@ def mostrar(lotes):
 
     while numero_de_lotes < len(lotes):         
         lote = lotes[numero_de_lotes]         
-
+        
         print("==============================================")
         print(f"LOTE EN EJECUCION: {numero_de_lotes + 1}")
         for p in lote:
@@ -92,7 +90,9 @@ def mostrar(lotes):
         for i in lote:             
             tiempo_estimado = 0                         
 
-            while tiempo_estimado < i[5]:                 
+            while tiempo_estimado < i[5]:         
+                
+                limpiar()        
 
                 pendientes = len(lotes) - numero_de_lotes - 1  
 
@@ -127,10 +127,10 @@ def mostrar(lotes):
                     print(f"{str(izq):<{ancho}}|{str(der):<{ancho}}")                                  
 
                 print()                  
-                print(f"Tiempo global: {tiempo}")                 
+                print(f"Tiempo global: {tiempo+1}")                 
                 print()                   
 
-                time.sleep(1)                 
+                time.sleep(1.5)                 
                 tiempo += 1                 
                 tiempo_estimado += 1             
 
