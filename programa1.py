@@ -99,7 +99,14 @@ def mostrar(lotes):
                 print("------------------------------------------------")                 
                 print(f"Lotes pendientes: {pendientes}")                 
                 print(f"Lote actual: {numero_de_lotes + 1}")                 
-                print("------------------------------------------------")                  
+                print("------------------------------------------------")            
+                
+                print("------------------------------------------------")                 
+                print(f"PROCESOS DEL LOTE: {numero_de_lotes+1}")                 
+                for ejecucion in lote:
+                    if ejecucion not in procesados and ejecucion != i:
+                        print(f"ID: {ejecucion[0]}")
+                print("------------------------------------------------")
 
                 actual = [                     
                     f"Nombre: {i[0]}",                     
@@ -110,13 +117,13 @@ def mostrar(lotes):
                     f"Tiempo restante: {i[5]-tiempo_estimado}"                 
                 ]                  
 
-                terminados = []                 
+                terminados = []       
+                separador = "----------------------------------------------------"          
                 for j in procesados:                     
                     terminados.extend([                         
-                        f"",                         
-                        f"ID: {j[6]}",                         
-                        f"Operacion: {j[1]}  Valores: {j[2]} y {j[3]}",                         
-                        f"Resultado: {j[4]}"                     
+                        separador,                         
+                        f"ID: {j[6]} Operacion: {j[1]}  Valores: {j[2]} y {j[3]} Resultado: {j[4]}",
+                        separador                
                     ])                  
 
                 from itertools import zip_longest                 
