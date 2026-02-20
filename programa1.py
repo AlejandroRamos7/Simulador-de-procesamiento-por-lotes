@@ -42,8 +42,11 @@ def captura(lista_id):
     while True:   
         a = int(input("ingrese el valor de a: "))             
         b = int(input("ingrese el valor de b: "))  
-        if b==0:        
-            print("b no puede valer 0, ingres otros valores")             
+        if opcion == 4 or opcion == 5:
+            if b==0:        
+                print("b no puede valer 0, ingres otros valores")
+            else:
+                break             
         else:
             break   
 
